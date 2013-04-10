@@ -1,0 +1,38 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+using Nemerle.Extensions;
+
+using System.Diagnostics;
+using System.IO;
+using Microsoft.Build.Utilities;
+using NUnit.Framework;
+
+
+/// <summary>
+/// Description of Verifier.
+/// </summary>
+module Verifier
+{
+    public Verify(assemblyPath2 : string) : void {
+        def exePath = GetPathToPEVerify();        
+        def process = Process.Start( ProcessStartInfo(exePath, "\"" + assemblyPath2 + "\"") <-
+                                        {
+                                            RedirectStandardOutput = true;
+                                            UseShellExecute = false;
+                                            CreateNoWindow = true
+                                        });
+
+        _ = process.WaitForExit(10000);
+        def readToEnd = process.StandardOutput.ReadToEnd().Trim();
+        Assert.IsTrue(readToEnd.Contains(string.Format("All Classes and Methods in {0} Verified.", assemblyPath2)), readToEnd);
+    }
+
+    private GetPathToPEVerify() : string
+    {
+        def peverifyPath = Path.Combine(
+            ToolLocationHelper.GetPathToDotNetFrameworkSdk(TargetDotNetFrameworkVersion.Version40), @"bin\NETFX 4.0 Tools\peverify.exe");
+        peverifyPath;
+    }
+}

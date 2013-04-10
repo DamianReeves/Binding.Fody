@@ -1,0 +1,39 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+using Nemerle.Extensions;
+
+using System;
+using System.IO;
+using System.Reflection;
+using Mono.Cecil;
+
+/// <summary>
+/// Description of WeaverHelper.
+/// </summary>
+module WeaverHelper
+{
+    public WeaveAssembly() : Assembly
+    {
+        def projectPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\AssemblyToProcess\AssemblyToProcess.nproj"));
+        def assemblyPath = Path.Combine(Path.GetDirectoryName(projectPath), @"bin\Debug\AssemblyToProcess.dll");
+#if (!DEBUG)
+        assemblyPath = assemblyPath.Replace("Debug", "Release");
+#endif
+
+        def newAssembly = assemblyPath.Replace(".dll", "2.dll");
+        File.Copy(assemblyPath, newAssembly, true);
+
+        def moduleDefinition = ModuleDefinition.ReadModule(newAssembly);
+        def weavingTask = ModuleWeaver() <-
+        {
+                          ModuleDefinition = moduleDefinition;
+        };
+
+        weavingTask.Execute();
+        moduleDefinition.Write(newAssembly);
+
+        Assembly.LoadFile(newAssembly);
+    }
+}

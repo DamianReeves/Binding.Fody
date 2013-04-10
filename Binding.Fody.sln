@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ns", "ns", "{37220174-DA96-4FD2-B516-355B604BB119}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cs", "cs", "{B280E839-A07B-4261-8C4C-40EE4337E859}"
+EndProject
+Project("{EDCC3B85-0BAD-11DB-BC1A-00112FDE8B61}") = "Binding.Fody", "ns\Binding.Fody\Binding.Fody.nproj", "{90750B3C-A82B-45C9-9684-EA47404CC04D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binding.Fody.Tests", "cs\Binding.Fody.Tests\Binding.Fody.Tests.csproj", "{70D4EBEB-1057-4C65-AFA8-F3D52C5359AE}"
+EndProject
+Project("{EDCC3B85-0BAD-11DB-BC1A-00112FDE8B61}") = "Binding.Fody.Tests", "ns\Binding.Fody.Tests\Binding.Fody.Tests.nproj", "{C7C98FCF-FAAF-44AB-AECB-B1602325CDEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fs", "fs", "{D277D33A-5CFC-4F83-8567-091FB6EB52C6}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Binding.Fody", "fs\Binding.Fody\Binding.Fody.fsproj", "{239FC548-96D2-4B8B-B3BB-C077245AB8A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcess", "cs\AssemblyToProcess\AssemblyToProcess.csproj", "{92B4A5EC-8D3F-42CB-8FD2-918F87FE6A83}"
+EndProject
+Project("{EDCC3B85-0BAD-11DB-BC1A-00112FDE8B61}") = "AssemblyToProcess", "ns\AssemblyToProcess\AssemblyToProcess.nproj", "{77380EAB-DA94-46DB-B107-BBCB0E1388DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90750B3C-A82B-45C9-9684-EA47404CC04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90750B3C-A82B-45C9-9684-EA47404CC04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90750B3C-A82B-45C9-9684-EA47404CC04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90750B3C-A82B-45C9-9684-EA47404CC04D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70D4EBEB-1057-4C65-AFA8-F3D52C5359AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D4EBEB-1057-4C65-AFA8-F3D52C5359AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D4EBEB-1057-4C65-AFA8-F3D52C5359AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D4EBEB-1057-4C65-AFA8-F3D52C5359AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C98FCF-FAAF-44AB-AECB-B1602325CDEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C98FCF-FAAF-44AB-AECB-B1602325CDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C98FCF-FAAF-44AB-AECB-B1602325CDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C98FCF-FAAF-44AB-AECB-B1602325CDEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92B4A5EC-8D3F-42CB-8FD2-918F87FE6A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92B4A5EC-8D3F-42CB-8FD2-918F87FE6A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92B4A5EC-8D3F-42CB-8FD2-918F87FE6A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92B4A5EC-8D3F-42CB-8FD2-918F87FE6A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77380EAB-DA94-46DB-B107-BBCB0E1388DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77380EAB-DA94-46DB-B107-BBCB0E1388DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77380EAB-DA94-46DB-B107-BBCB0E1388DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77380EAB-DA94-46DB-B107-BBCB0E1388DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{90750B3C-A82B-45C9-9684-EA47404CC04D} = {37220174-DA96-4FD2-B516-355B604BB119}
+		{C7C98FCF-FAAF-44AB-AECB-B1602325CDEF} = {37220174-DA96-4FD2-B516-355B604BB119}
+		{77380EAB-DA94-46DB-B107-BBCB0E1388DB} = {37220174-DA96-4FD2-B516-355B604BB119}
+		{70D4EBEB-1057-4C65-AFA8-F3D52C5359AE} = {B280E839-A07B-4261-8C4C-40EE4337E859}
+		{92B4A5EC-8D3F-42CB-8FD2-918F87FE6A83} = {B280E839-A07B-4261-8C4C-40EE4337E859}
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8} = {D277D33A-5CFC-4F83-8567-091FB6EB52C6}
+	EndGlobalSection
+EndGlobal

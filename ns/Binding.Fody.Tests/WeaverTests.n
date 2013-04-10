@@ -1,0 +1,44 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+using Nemerle.Late;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using NUnit.Framework;
+
+/// <summary>
+  /// Description of WeaverTests.
+  /// </summary>
+  class WeaverTests
+  {
+           mutable assembly : Assembly;
+
+    [TestFixtureSetUp]
+    public Setup() : void
+    {
+        assembly = WeaverHelper.WeaveAssembly();
+    }
+
+    [Test]
+    public ValidateHelloWorldIsInjected() : void
+    {
+        def type = assembly.GetType("Hello");
+        def instance = late Activator.CreateInstance(type);
+
+        late (
+            Assert.AreEqual("Hello World", instance.World())
+        )
+    }
+
+#if(DEBUG)
+    [Test]
+    public PeVerify() : void
+    {
+        Verifier.Verify(assembly.CodeBase.Remove(0, 8));
+    }
+#endif
+  }
