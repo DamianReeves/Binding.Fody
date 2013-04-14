@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fs", "fs", "{D277D33A-5CFC-4F83-8567-091FB6EB52C6}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Binding.Fody", "fs\Binding.Fody\Binding.Fody.fsproj", "{239FC548-96D2-4B8B-B3BB-C077245AB8A8}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Binding.Fody.Tests", "fs\Binding.Fody.Tests\Binding.Fody.Tests.fsproj", "{291D3776-1EB8-454E-93C4-94E4A9366A3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{291D3776-1EB8-454E-93C4-94E4A9366A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{291D3776-1EB8-454E-93C4-94E4A9366A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291D3776-1EB8-454E-93C4-94E4A9366A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{291D3776-1EB8-454E-93C4-94E4A9366A3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{239FC548-96D2-4B8B-B3BB-C077245AB8A8} = {D277D33A-5CFC-4F83-8567-091FB6EB52C6}
+		{291D3776-1EB8-454E-93C4-94E4A9366A3D} = {D277D33A-5CFC-4F83-8567-091FB6EB52C6}
+	EndGlobalSection
+EndGlobal
