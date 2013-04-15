@@ -1,16 +1,23 @@
 ﻿namespace Binding.Fody
 open System
+open System
 open System.Linq
+open System.Xml.Linq
 open Mono.Cecil
 open Mono.Cecil.Rocks
 open Mono.Cecil.Cil
+open ModuleWeaver.Internal
 
 type ModuleWeaver() = 
     let mutable typeSystem : TypeSystem = null
     let mutable moduleDefinition : ModuleDefinition = null 
     let mutable logInfo : Action<string> = null
+    let mutable config : XElement = null
+
     do
         logInfo <- Action<string>(fun _ -> ())
+
+    member this.Config with get() = config and set(value:XElement) = config <- value
 
     member this.LogInfo
         with get() = logInfo 
@@ -19,6 +26,9 @@ type ModuleWeaver() =
     member this.ModuleDefinition with get() = moduleDefinition and set(value) = moduleDefinition <- value
 
     member this.Execute =
+        let bindToAttributeNames = ConfigReader.GetBindToAttributeNames
+        let reactToAttributeNames = ConfigReader.GetReactToAttributeNames
+
         typeSystem <- this.ModuleDefinition.TypeSystem
         let newType = TypeDefinition(null, "Hello", TypeAttributes.Public, typeSystem.Object)
         this.AddConstructor newType
@@ -41,4 +51,4 @@ type ModuleWeaver() =
         let processor = method'.Body.GetILProcessor()
         processor.Emit(OpCodes.Ldstr, "Hello World")
         processor.Emit(OpCodes.Ret)
-        newType.Methods.Add(method')   
+        newType.Methods.Add(method')        
