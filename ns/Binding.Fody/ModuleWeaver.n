@@ -10,52 +10,55 @@ using Mono.Cecil;
 using Mono.Cecil.Rocks;
 using Mono.Cecil.Cil;
 
-public partial class ModuleWeaver
+namespace Binding.Fody 
 {
+    public partial class ModuleWeaver
+    {
         // Will log an informational message to MSBuild
-    public LogInfo : Action[string] { get; set; }
+        public LogInfo : Action[string] { get; set; }
 
         // An instance of Mono.Cecil.ModuleDefinition for processing
-    public ModuleDefinition : ModuleDefinition { get; set; }
+        public ModuleDefinition : ModuleDefinition { get; set; }
 
-    mutable typeSystem : TypeSystem;
+        mutable typeSystem : TypeSystem;
 
         // Init logging delegates to make testing easier
-    public this()
-    {
-        LogInfo = _ => { };
-    }
+        public this()
+        {
+            LogInfo = _ => { };
+        }
 
-    public Execute() : void
-    {
-        typeSystem = ModuleDefinition.TypeSystem;
-        def newType = TypeDefinition(null, "Hello", TypeAttributes.Public, typeSystem.Object);
+        public Execute() : void
+        {
+            typeSystem = ModuleDefinition.TypeSystem;
+            def newType = TypeDefinition(null, "Hello", TypeAttributes.Public, typeSystem.Object);
 
-        AddConstructor(newType);
+            AddConstructor(newType);
 
-        AddHelloWorld(newType);
+            AddHelloWorld(newType);
 
-        ModuleDefinition.Types.Add(newType);
-        LogInfo("Added type 'Hello' with method 'World'.");
-    }
+            ModuleDefinition.Types.Add(newType);
+            LogInfo("Added type 'Hello' with method 'World'.");
+        }
 
-    AddConstructor(newType : TypeDefinition) : void
-    {
-        def method = MethodDefinition(".ctor", MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName, typeSystem.Void);
-        def objectConstructor = ModuleDefinition.Import(typeSystem.Object.Resolve().GetConstructors().First());
-        def processor = method.Body.GetILProcessor();
-        processor.Emit(OpCodes.Ldarg_0);
-        processor.Emit(OpCodes.Call, objectConstructor);
-        processor.Emit(OpCodes.Ret);
-        newType.Methods.Add(method);
-    }
+        AddConstructor(newType : TypeDefinition) : void
+        {
+            def method = MethodDefinition(".ctor", MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName, typeSystem.Void);
+            def objectConstructor = ModuleDefinition.Import(typeSystem.Object.Resolve().GetConstructors().First());
+            def processor = method.Body.GetILProcessor();
+            processor.Emit(OpCodes.Ldarg_0);
+            processor.Emit(OpCodes.Call, objectConstructor);
+            processor.Emit(OpCodes.Ret);
+            newType.Methods.Add(method);
+        }
 
-    AddHelloWorld(newType : TypeDefinition) : void
-    {
-        def method = MethodDefinition("World", MethodAttributes.Public, typeSystem.String);
-        def processor = method.Body.GetILProcessor();
-        processor.Emit(OpCodes.Ldstr, "Hello World");
-        processor.Emit(OpCodes.Ret);
-        newType.Methods.Add(method);
-    }
-}  
+        AddHelloWorld(newType : TypeDefinition) : void
+        {
+            def method = MethodDefinition("World", MethodAttributes.Public, typeSystem.String);
+            def processor = method.Body.GetILProcessor();
+            processor.Emit(OpCodes.Ldstr, "Hello World");
+            processor.Emit(OpCodes.Ret);
+            newType.Methods.Add(method);
+        }
+    }  
+}

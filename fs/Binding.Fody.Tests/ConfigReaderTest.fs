@@ -21,9 +21,9 @@ type ConfigReaderTest () =
 
     [<Test>]
     member x.
-        ``GetReactToAttributeNames() Should Include AttributeName Specified In BindToAttributeNames On Config`` () =
+        ``GetReactToAttributeNames() Should Include AttributeName Specified In ReactToAttributeNames On Config`` () =
             let bindToAttributeNames = 
-                """<Binding BindToAttributeNames="MyBindToAttribute" />"""
+                """<Binding ReactToAttributeNames="MyReactToAttribute" />"""
                 |> XElement.Parse
-                |> ConfigReader.GetBindToAttributeNames
-            bindToAttributeNames |> should contain "MyBindToAttribute"
+                |> ConfigReader.GetReactToAttributeNames
+            bindToAttributeNames |> should contain "MyReactToAttribute"

@@ -36,6 +36,12 @@
     <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <MacroReference Include="Nemerle.Xml.Macro, Version=1.1.9999.0, Culture=neutral, PublicKeyToken=null">
+      <Name>Nemerle.Xml.Macro</Name>
+      <AssemblyName>Nemerle.Xml.Macro.dll</AssemblyName>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Nemerle\net-4.0\Nemerle.Xml.Macro.dll</HintPath>
+      <Private>False</Private>
+    </MacroReference>
     <Reference Include="FluentAssertions, Version=2.0.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a">
       <Name>FluentAssertions</Name>
       <AssemblyName>FluentAssertions.dll</AssemblyName>

@@ -31,7 +31,18 @@ namespace Binding.Fody
         }
 
         public GetReactToAttributeNames(config:XElement):IEnumerable[string] {
-            Enumerable.Empty()
+            def reactToAttributeNames = ["Binding.ReactTo"];
+            match (config) {
+                | null => reactToAttributeNames
+                | xml => 
+                    match(xml.Attributes("ReactToAttributeNames").FirstOrDefault() :> string) {
+                        | null => reactToAttributeNames
+                        | names => names
+                            .Split(array [','], StringSplitOptions.RemoveEmptyEntries)
+                            .ToArray()
+                            .Concat(reactToAttributeNames)                        
+                    }                    
+            }
         }
     }
 }

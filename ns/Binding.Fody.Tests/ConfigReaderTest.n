@@ -1,5 +1,6 @@
 ﻿using Nemerle;
 using Nemerle.Collections;
+using Nemerle.Extensions;
 using Nemerle.Text;
 using Nemerle.Xml;
 using Nemerle.Utility;
@@ -8,6 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using NUnit.Framework;
+using Binding.Fody;
+using FluentAssertions;
 
 namespace Binding.Fody.Tests
 {
@@ -17,12 +21,34 @@ namespace Binding.Fody.Tests
     [TestFixture]
     class ConfigReaderTest
     {
+        mutable weaver : ModuleWeaver;
+        
+        [SetUp]
+        public Setup() : void
+        {
+            weaver = ModuleWeaver();
+        }
+        
         [Test]
         public GetBindToAttributeNames_Should_Include_AttributeName_Specified_In_BindToAttributeNames_On_Config()  : void
         {
-            //def config = xml <# 
-            //    <Binding BindToAttributeName="MyBindToAttribute" /> 
+            def config = XElement.Parse("<Binding BindToAttributeNames=\"MyBindToAttribute\" />");            
+            //def config = xml <#
+            //    <Binding BindToAttributeNames="MyBindToAttribute"/>
             //#>;
+            def names = weaver.GetBindToAttributeNames(config);
+            names.Should().Contain(array["MyBindToAttribute"]);
+        }
+        
+        [Test]
+        public GetREactToAttributeNames_Should_Include_AttributeName_Specified_In_BindToAttributeNames_On_Config()  : void
+        {
+            def config = XElement.Parse("<Binding ReactToAttributeNames=\"MyReactToAttribute\" />");            
+            //def config = xml <#
+            //    <Binding BindToAttributeNames="MyBindToAttribute"/>
+            //#>;
+            def names = weaver.GetReactToAttributeNames(config) :>IEnumerable[string];
+            names.Should().Contain(array["MyReactToAttribute"]);
         }
     }
 }
