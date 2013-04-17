@@ -10,7 +10,7 @@ using Mono.Cecil;
 using Mono.Cecil.Rocks;
 using Mono.Cecil.Cil;
 
-public class ModuleWeaver
+public partial class ModuleWeaver
 {
         // Will log an informational message to MSBuild
     public LogInfo : Action[string] { get; set; }

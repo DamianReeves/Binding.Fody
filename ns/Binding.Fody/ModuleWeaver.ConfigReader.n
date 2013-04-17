@@ -1,0 +1,37 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+
+namespace Binding.Fody
+{
+/// <summary>
+/// Description of ModuleWeaver.
+/// </summary>
+    public partial class ModuleWeaver
+    {
+        public GetBindToAttributeNames(config:XElement):IEnumerable[string] {
+            def reactToAttributeNames = ["Binding.BindTo"];
+            match (config) {
+                | null => reactToAttributeNames
+                | xml => 
+                    match(xml.Attributes("BindToAttributeNames").FirstOrDefault() :> string) {
+                        | null => reactToAttributeNames
+                        | names => names
+                            .Split(array [','], StringSplitOptions.RemoveEmptyEntries)
+                            .ToArray()
+                            .Concat(reactToAttributeNames)                        
+                    }                    
+            }
+        }
+
+        public GetReactToAttributeNames(config:XElement):IEnumerable[string] {
+            Enumerable.Empty()
+        }
+    }
+}

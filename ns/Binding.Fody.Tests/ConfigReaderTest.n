@@ -1,0 +1,28 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Xml;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+
+namespace Binding.Fody.Tests
+{
+    /// <summary>
+    /// Description of ConfigReaderTest.
+    /// </summary>
+    [TestFixture]
+    class ConfigReaderTest
+    {
+        [Test]
+        public GetBindToAttributeNames_Should_Include_AttributeName_Specified_In_BindToAttributeNames_On_Config()  : void
+        {
+            //def config = xml <# 
+            //    <Binding BindToAttributeName="MyBindToAttribute" /> 
+            //#>;
+        }
+    }
+}

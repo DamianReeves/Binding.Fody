@@ -79,6 +79,10 @@
     </MacroReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModuleWeaver.ConfigReader.n">
+      <SubType>Code</SubType>
+      <DependentUpon>ModuleWeaver.n</DependentUpon>
+    </Compile>
     <Compile Include="ModuleWeaver.n" />
     <Compile Include="Properties\AssemblyInfo.n" />
   </ItemGroup>

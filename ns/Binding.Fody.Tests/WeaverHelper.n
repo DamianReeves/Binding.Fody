@@ -28,7 +28,7 @@ module WeaverHelper
         def moduleDefinition = ModuleDefinition.ReadModule(newAssembly);
         def weavingTask = ModuleWeaver() <-
         {
-                          ModuleDefinition = moduleDefinition;
+            ModuleDefinition = moduleDefinition;
         };
 
         weavingTask.Execute();

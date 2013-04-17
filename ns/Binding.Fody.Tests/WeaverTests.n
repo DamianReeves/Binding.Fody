@@ -23,7 +23,7 @@ using NUnit.Framework;
         assembly = WeaverHelper.WeaveAssembly();
     }
 
-    [Test]
+    [Test,Description("Validate Hello World Is Injected")]
     public ValidateHelloWorldIsInjected() : void
     {
         def type = assembly.GetType("Hello");
